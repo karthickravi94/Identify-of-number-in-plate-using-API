@@ -236,14 +236,8 @@ def make_prediction():
                 characters = []
                 column_list = [] 
                 return render_template('result.html',  image = filename, label=rightplate_string)
-def open_browser():
-      chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s --incognito'
-      webbrowser.get(chrome_path).open_new('http://127.0.0.1:8000/')
-
-
 if __name__ == '__main__':
-        filename = 'finalized_model.sav'
-        model = pickle.load(open(filename, 'rb'))      
-        Timer(1, open_browser).start();
-        app.run(port=8000)
+	filename = 'finalized_model.sav'
+	model = pickle.load(open(filename, 'rb'))
+	app.run(host='0.0.0.0', port=8000, debug=True)
         
